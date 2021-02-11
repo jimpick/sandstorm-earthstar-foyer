@@ -1,0 +1,3 @@
+[submodule "earthstar-foyer"]
+	path = earthstar-foyer
+	url = git@github.com:earthstar-project/earthstar-foyer.git

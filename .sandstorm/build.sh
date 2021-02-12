@@ -22,5 +22,7 @@ set -euo pipefail
 cd /opt/app
 
 npm install
+(cd earthstar-foyer; rm -rf node_modules/better-sqlite3; npm install; npm run build)
+(cd earthstar-pub; rm -rf node_modules/better-sqlite3; npm install; npm run build)
 
 # bower install

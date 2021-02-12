@@ -1,3 +1,6 @@
 [submodule "earthstar-foyer"]
 	path = earthstar-foyer
-	url = git@github.com:earthstar-project/earthstar-foyer.git
+	url = git@github.com:jimpick/earthstar-foyer.git
+[submodule "earthstar-pub"]
+	path = earthstar-pub
+	url = git@github.com:earthstar-project/earthstar-pub.git

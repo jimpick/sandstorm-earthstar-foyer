@@ -33,4 +33,5 @@ cd /opt/app
 # express.js has fewer problems when HOME is defined
 export HOME=/opt/app
 
-npm start
+#npm start
+node index.js

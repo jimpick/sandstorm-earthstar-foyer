@@ -9,7 +9,7 @@ const pkgdef :Spk.PackageDefinition = (
   # The package definition. Note that the spk tool looks specifically for the
   # "pkgdef" constant.
 
-  id = "ztss94ucafkmqphr2skqzmtf8aup4qcx4er3qqzd53kpuum50er0",
+  id = "ag4cud4dvv2mg450ay36jfct2xss1u1vgrwu4f6h1fxka1axh4fh",
   # Your app ID is actually its public key. The private key was placed in
   # your keyring. All updates must be signed with the same key.
 
@@ -156,7 +156,7 @@ const pkgdef :Spk.PackageDefinition = (
   # `spk dev` will write a list of all the files your app uses to this file.
   # You should review it later, before shipping your app.
 
-  alwaysInclude = [],
+  alwaysInclude = [ "opt/app/node_modules", "opt/app/earthstar-pub/node_modules" ],
   # Fill this list with more names of files or directories that should be
   # included in your package, even if not listed in sandstorm-files.list.
   # Use this to force-include stuff that you know you need but which may

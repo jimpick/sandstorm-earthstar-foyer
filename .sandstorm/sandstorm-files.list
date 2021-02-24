@@ -4,10 +4,14 @@
 # expect comments or ordering to be retained.
 bin/bash
 bin/dash
+bin/ls
 bin/sh
+etc/bash.bashrc
+etc/inputrc
 etc/ld.so.cache
 etc/localtime
 etc/ssl/openssl.cnf
+lib/terminfo/d/dumb
 lib/x86_64-linux-gnu/ld-2.24.so
 lib/x86_64-linux-gnu/libc-2.24.so
 lib/x86_64-linux-gnu/libc.so.6
@@ -24,16 +28,19 @@ lib/x86_64-linux-gnu/libnss_files-2.24.so
 lib/x86_64-linux-gnu/libnss_files.so.2
 lib/x86_64-linux-gnu/libnss_nis-2.24.so
 lib/x86_64-linux-gnu/libnss_nis.so.2
+lib/x86_64-linux-gnu/libpcre.so.3
+lib/x86_64-linux-gnu/libpcre.so.3.13.3
 lib/x86_64-linux-gnu/libpthread-2.24.so
 lib/x86_64-linux-gnu/libpthread.so.0
 lib/x86_64-linux-gnu/librt-2.24.so
 lib/x86_64-linux-gnu/librt.so.1
+lib/x86_64-linux-gnu/libselinux.so.1
 lib/x86_64-linux-gnu/libtinfo.so.5
 lib/x86_64-linux-gnu/libtinfo.so.5.9
 lib64/ld-linux-x86-64.so.2
 opt/app
 opt/app/.git/HEAD
-opt/app/.git/refs/heads/master
+opt/app/.git/refs/heads/main
 opt/app/.sandstorm/launcher.sh
 opt/app/earthstar-foyer/public/index.html
 opt/app/earthstar-foyer/public/static/css/foyer.css

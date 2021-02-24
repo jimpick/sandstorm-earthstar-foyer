@@ -19,9 +19,13 @@ echo "Installing the NodeSource Node.js 10.x repo..."
 apt-get update
 apt-get install -qq apt-transport-https
 
-curl -sL https://deb.nodesource.com/setup_10.x | bash -
+#curl -sL https://deb.nodesource.com/setup_10.x | bash -
 
 # Actually install node
-apt-get install -qq nodejs git-core g++
+#apt-get install -qq nodejs git-core g++
+apt-get install -qq git-core g++
+
+curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+apt-get install -y nodejs
 
 exit 0

@@ -615,6 +615,7 @@ usr/lib/node_modules/npm/node_modules/json-parse-better-errors/package.json
 usr/lib/node_modules/npm/node_modules/jsonparse/jsonparse.js
 usr/lib/node_modules/npm/node_modules/jsonparse/package.json
 usr/lib/node_modules/npm/node_modules/libnpm/fetch.js
+usr/lib/node_modules/npm/node_modules/libnpm/package.json
 usr/lib/node_modules/npm/node_modules/lru-cache/index.js
 usr/lib/node_modules/npm/node_modules/lru-cache/package.json
 usr/lib/node_modules/npm/node_modules/make-dir/index.js
@@ -638,6 +639,7 @@ usr/lib/node_modules/npm/node_modules/node-fetch-npm/src/headers.js
 usr/lib/node_modules/npm/node_modules/node-fetch-npm/src/index.js
 usr/lib/node_modules/npm/node_modules/node-fetch-npm/src/request.js
 usr/lib/node_modules/npm/node_modules/node-fetch-npm/src/response.js
+usr/lib/node_modules/npm/node_modules/node-gyp/package.json
 usr/lib/node_modules/npm/node_modules/nopt/lib/nopt.js
 usr/lib/node_modules/npm/node_modules/nopt/package.json
 usr/lib/node_modules/npm/node_modules/normalize-package-data/lib/extract_description.js

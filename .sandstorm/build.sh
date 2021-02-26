@@ -26,3 +26,8 @@ npm install
 (cd earthstar-pub; rm -rf node_modules/better-sqlite3; npm install; npm run build)
 
 # bower install
+
+cd /opt/app/.sandstorm/powerbox-http-proxy
+go build
+npm install
+npm run build

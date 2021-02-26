@@ -4,14 +4,18 @@
 # expect comments or ordering to be retained.
 bin/bash
 bin/dash
+bin/less
 bin/ls
 bin/sh
 etc/bash.bashrc
+etc/group
 etc/inputrc
 etc/ld.so.cache
 etc/localtime
 etc/ssl/openssl.cnf
+launcher.sh
 lib/terminfo/d/dumb
+lib/terminfo/x/xterm
 lib/x86_64-linux-gnu/ld-2.24.so
 lib/x86_64-linux-gnu/libc-2.24.so
 lib/x86_64-linux-gnu/libc.so.6
@@ -41,7 +45,12 @@ lib64/ld-linux-x86-64.so.2
 opt/app
 opt/app/.git/HEAD
 opt/app/.git/refs/heads/main
+opt/app/.sandstorm
 opt/app/.sandstorm/launcher.sh
+opt/app/.sandstorm/powerbox-http-proxy
+opt/app/.sandstorm/powerbox-http-proxy/build
+opt/app/.sandstorm/powerbox-http-proxy/build/index.js
+opt/app/.sandstorm/powerbox-http-proxy/powerbox-http-proxy
 opt/app/earthstar-foyer/public/index.html
 opt/app/earthstar-foyer/public/static/css/foyer.css
 opt/app/earthstar-foyer/public/static/css/normalize.css
@@ -410,6 +419,7 @@ sandstorm-http-bridge
 sandstorm-http-bridge-config
 sandstorm-manifest
 usr/bin/env
+usr/bin/less
 usr/bin/node
 usr/bin/npm
 usr/lib/node_modules/npm/bin/npm-cli.js
@@ -783,5 +793,6 @@ usr/lib/node_modules/npm/node_modules/yallist/yallist.js
 usr/lib/node_modules/npm/package.json
 usr/lib/x86_64-linux-gnu/libstdc++.so.6
 usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.22
+usr/share/terminfo/u/unknown
 usr/share/zoneinfo/Etc/GMT+0
 usr/share/zoneinfo/GMT

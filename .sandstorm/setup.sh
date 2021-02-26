@@ -14,7 +14,14 @@ set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive
 
-echo "Installing the NodeSource Node.js 10.x repo..."
+# Install Go, for the powerbox server:
+curl -sL https://dl.google.com/go/go1.16.linux-amd64.tar.gz -o /usr/local/go.tar.gz
+(cd /usr/local && tar -xvf go.tar.gz)
+cat > /etc/profile.d/go.sh <<"EOF"
+export PATH="$PATH:/usr/local/go/bin"
+EOF
+
+#echo "Installing the NodeSource Node.js 10.x repo..."
 
 apt-get update
 apt-get install -qq apt-transport-https

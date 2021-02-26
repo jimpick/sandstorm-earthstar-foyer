@@ -4,3 +4,6 @@
 [submodule "earthstar-pub"]
 	path = earthstar-pub
 	url = git@github.com:earthstar-project/earthstar-pub.git
+[submodule ".sandstorm/powerbox-http-proxy"]
+	path = .sandstorm/powerbox-http-proxy
+	url = https://github.com/zenhack/powerbox-http-proxy

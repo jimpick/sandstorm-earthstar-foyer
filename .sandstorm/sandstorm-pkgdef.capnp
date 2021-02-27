@@ -243,5 +243,9 @@ const myCommand :Spk.Manifest.Command = (
     # Export SANDSTORM=1 into the environment, so that apps running within Sandstorm
     # can detect if $SANDSTORM="1" at runtime, switching UI and/or backend to use
     # the app's Sandstorm-specific integration code.
+    (key = "POWERBOX_WEBSOCKET_PORT", value = "3000"),
+    (key = "POWERBOX_PROXY_PORT", value = "4000"),
+    (key = "http_proxy", value = "http://127.0.0.1:4000"), 
+    (key = "https_proxy", value = "http://127.0.0.1:4000"), 
   ]
 );

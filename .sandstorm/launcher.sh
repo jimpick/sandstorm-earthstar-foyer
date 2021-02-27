@@ -26,12 +26,34 @@ set -euo pipefail
 #     to think about such things.
 #   * Launching other daemons your app needs (e.g. mysqld, redis-server, etc.)
 
+wait_for() {
+    local service=$1
+    local file=$2
+    while [ ! -e "$file" ] ; do
+        echo "waiting for $service to be available at $file."
+        sleep .1
+    done
+}
+
 # By default, this script does nothing.  You'll have to modify it as
 # appropriate for your application.
 cd /opt/app
 
 # express.js has fewer problems when HOME is defined
 export HOME=/opt/app
+
+# Start our powerbox proxy server, and wait for it to write the cert:
+export DB_TYPE=sqlite3
+export DB_URI=/var/powerbox-http-proxy.sqlite3
+export CA_CERT_PATH=/var/ca-spoof-cert.pem
+rm -f $CA_CERT_PATH
+/opt/app/.sandstorm/powerbox-http-proxy/powerbox-http-proxy &
+#wait_for "root cert" "$CA_CERT_PATH"
+
+#export http_proxy=http://127.0.0.1:$POWERBOX_PROXY_PORT
+#export http_proxy=http://127.0.0.1:$POWERBOX_PROXY_PORT
+export http_proxy=http://127.0.0.1:4000
+export https_proxy=http://127.0.0.1:4000
 
 #npm start
 node index.js

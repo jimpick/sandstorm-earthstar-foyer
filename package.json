@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "fetch-with-proxy": "^3.0.1",
-    "http-proxy": "^1.18.1"
+    "http-proxy": "^1.18.1",
+    "request": "^2.88.2"
   }
 }

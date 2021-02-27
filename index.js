@@ -3,7 +3,7 @@ const http = require('http')
 const path = require('path')
 const express = require('express')
 const httpProxy = require('http-proxy')
-const fetch = require('fetch-with-proxy').default
+const request = require('request')
 const pub = require('./earthstar-pub')
 const app = express()
 
@@ -40,19 +40,27 @@ pubApp = pub.makeExpressApp({
 
 app.use('/pub', pubApp)
 
-app.get('/fetch', (request, response) => {
+app.get('/fetch', (req, res) => {
   const url =
     'http://ipfs.io/ipfs/QmeeLUVdiSTTKQqhWqsffYDtNvvvcTfJdotkNyi1KDEJtQ'
   console.log('Fetching...', url, 'via', process.env.http_proxy)
-  fetch(url)
-    .then(response => response.text())
-    .then(result => {
-      response.send(result)
-    })
-    .catch(err => {
-      console.error(err)
-      response.status(500).send('Error')
-    })
+  request(
+    {
+      uri: url,
+      proxy: 'http://127.0.0.1:4000'
+    },
+    function (error, response, body) {
+      if (error) {
+        console.error('error:', error)
+        res.status(500).send('Error')
+        return
+      }
+      console.log('headers:', response && response.headers)
+      console.log('statusCode:', response && response.statusCode)
+      console.log('body:', body)
+      res.status(response.statusCode).send(body)
+    }
+  )
 })
 
 // serve the index path for any URL

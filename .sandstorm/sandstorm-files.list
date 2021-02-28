@@ -695,7 +695,6 @@ opt/app/node_modules/vary/package.json
 opt/app/node_modules/verror/lib/verror.js
 opt/app/node_modules/verror/package.json
 opt/app/package.json
-opt/app/test-fetch-with-proxy.js
 opt/app/test-request.js
 proc/cpuinfo
 run-powerbox-http-proxy.sh

@@ -7,6 +7,9 @@ const request = require('request')
 const pub = require('./earthstar-pub')
 const app = express()
 
+const caPath = '/var/ca-spoof-cert.pem'
+const ca = [fs.readFileSync(caPath, {encoding: 'utf-8'})]
+
 const server = require('http').createServer(app)
 const port = 8000
 
@@ -42,12 +45,13 @@ app.use('/pub', pubApp)
 
 app.get('/fetch', (req, res) => {
   const url =
-    'http://ipfs.io/ipfs/QmeeLUVdiSTTKQqhWqsffYDtNvvvcTfJdotkNyi1KDEJtQ'
-  console.log('Fetching...', url, 'via', process.env.http_proxy)
+    'https://ipfs.io/ipfs/QmeeLUVdiSTTKQqhWqsffYDtNvvvcTfJdotkNyi1KDEJtQ'
+  console.log('Fetching...', url, 'via', process.env.https_proxy)
   request(
     {
       uri: url,
-      proxy: 'http://127.0.0.1:4000'
+      proxy: process.env.https_proxy,
+      ca
     },
     function (error, response, body) {
       if (error) {

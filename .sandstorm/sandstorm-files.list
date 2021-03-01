@@ -99,7 +99,6 @@ opt
 opt/app
 opt/app/.git/HEAD
 opt/app/.git/refs/heads/main
-opt/app/.index.js.swp
 opt/app/.sandstorm
 opt/app/.sandstorm/launcher.sh
 opt/app/.sandstorm/powerbox-http-proxy
@@ -360,7 +359,6 @@ opt/app/earthstar-pub/public/static
 opt/app/earthstar-pub/public/static/img
 opt/app/earthstar-pub/src
 opt/app/index.js
-opt/app/index2.js
 opt/app/node_modules
 opt/app/node_modules/accepts/index.js
 opt/app/node_modules/accepts/package.json
@@ -745,8 +743,10 @@ usr/bin/less
 usr/bin/node
 usr/bin/nodemon
 usr/bin/npm
+usr/bin/reset
 usr/bin/sudo
 usr/bin/top
+usr/bin/tset
 usr/bin/vi
 usr/bin/view
 usr/bin/vim.tiny

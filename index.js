@@ -86,15 +86,17 @@ proxyRouter.all('/:protocol/:host/', (req, res) => {
   if (match) {
     const token = match[1]
     const apiPath = match[2].replace(' ', '+')
-    const url = `${req.params.protocol}://${req.params.host}/${apiPath}`
+    const url =
+      `${req.params.protocol}://${req.params.host}` +
+      `/${apiPath}?token=${token}`
     const headers = {
       'content-type': req.headers['content-type'],
       'content-length': req.headers['content-length'],
       'accept-language': req.headers['accept-language'],
       'user-agent': req.headers['user-agent'],
       accept: req.headers['accept'],
-      'accept-encoding': req.headers['accept-encoding'],
-      authorization: `Bearer ${token}`
+      'accept-encoding': req.headers['accept-encoding']
+      // authorization: `Bearer ${token}`, // Gets stripped by Sandstorm
     }
     console.log(`Proxy ${req.method} url`, url)
     console.log(`Proxy ${req.method} sending headers`, headers)

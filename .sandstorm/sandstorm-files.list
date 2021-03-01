@@ -725,8 +725,6 @@ opt/app/node_modules/verror/lib/verror.js
 opt/app/node_modules/verror/package.json
 opt/app/package.json
 opt/app/test-request.js
-proc
-proc/cpuinfo
 run-powerbox-http-proxy.sh
 sandstorm-http-bridge
 sandstorm-http-bridge-config

@@ -35,4 +35,6 @@ apt-get install -qq git-core g++
 curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
 apt-get install -y nodejs
 
+npm install -g nodemon
+
 exit 0

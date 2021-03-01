@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "delay": "^5.0.0",
     "express": "^4.17.1",
     "fetch-with-proxy": "^3.0.1",
     "http-proxy": "^1.18.1",

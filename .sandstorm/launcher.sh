@@ -56,4 +56,5 @@ export http_proxy=http://127.0.0.1:4000
 export https_proxy=http://127.0.0.1:4000
 
 #npm start
-node index.js
+#node index.js
+nodemon -L index.js

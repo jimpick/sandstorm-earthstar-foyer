@@ -77,15 +77,15 @@ proxyRouter.use(
   })
 )
 
-proxyRouter.post('/:protocol/:host/', (req, res) => {
-  console.log(`Proxy post `, req.url, req.params, req.query)
-  console.log(`Proxy post headers`, req.headers)
-  console.log(`Proxy post body`, req.body)
+proxyRouter.all('/:protocol/:host/', (req, res) => {
+  console.log(`Proxy ${req.method} `, req.url, req.params, req.query)
+  console.log(`Proxy ${req.method} headers`, req.headers)
+  console.log(`Proxy ${req.method} body`, req.body)
   const match =
     req.query.token && req.query.token.match(/^(.*)\/(earthstar-api.*)/)
   if (match) {
     const token = match[1]
-    const apiPath = match[2]
+    const apiPath = match[2].replace(' ', '+')
     const url = `${req.params.protocol}://${req.params.host}/${apiPath}`
     const headers = {
       'content-type': req.headers['content-type'],
@@ -96,28 +96,32 @@ proxyRouter.post('/:protocol/:host/', (req, res) => {
       'accept-encoding': req.headers['accept-encoding'],
       authorization: `Bearer ${token}`
     }
-    console.log(`Proxy post sending headers`, headers)
-    request(
-      {
-        method: 'POST',
-        uri: url,
-        proxy: process.env.https_proxy,
-        ca,
-        headers,
-        body: req.body
-      },
-      function (error, response, body) {
-        if (error) {
-          console.error('error:', error)
-          res.status(500).send('Error')
-          return
-        }
-        console.log('headers:', response && response.headers)
-        console.log('statusCode:', response && response.statusCode)
-        console.log('body:', body)
-        res.status(response.statusCode).send(body)
+    console.log(`Proxy ${req.method} url`, url)
+    console.log(`Proxy ${req.method} sending headers`, headers)
+    const options = {
+      method: req.method,
+      uri: url,
+      proxy: process.env.https_proxy,
+      ca,
+      headers
+    }
+    if (req.method === 'POST') {
+      options.body = req.body
+    }
+    request(options, function (error, response, body) {
+      if (error) {
+        console.error('error:', error)
+        res.status(500).send('Error')
+        return
       }
-    )
+      console.log('headers:', response && response.headers)
+      console.log('statusCode:', response && response.statusCode)
+      console.log('body:', body)
+      res
+        .status(response.statusCode)
+        .set(response.headers)
+        .send(body)
+    })
   } else {
     res.status(400).send('Invalid target URL')
   }

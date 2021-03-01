@@ -2,13 +2,15 @@ const fs = require('fs')
 const http = require('http')
 const path = require('path')
 const express = require('express')
+const bodyParser = require('body-parser')
 const httpProxy = require('http-proxy')
-const request = require('request')
+const request = require('request') // deprecated, try axios?
 const pub = require('./earthstar-pub')
+
 const app = express()
 
 const caPath = '/var/ca-spoof-cert.pem'
-const ca = [fs.readFileSync(caPath, {encoding: 'utf-8'})]
+const ca = [fs.readFileSync(caPath, { encoding: 'utf-8' })]
 
 const server = require('http').createServer(app)
 const port = 8000
@@ -66,6 +68,62 @@ app.get('/fetch', (req, res) => {
     }
   )
 })
+
+var proxyRouter = express.Router()
+
+proxyRouter.use(
+  bodyParser.raw({
+    type: '*/*'
+  })
+)
+
+proxyRouter.post('/:protocol/:host/', (req, res) => {
+  console.log(`Proxy post `, req.url, req.params, req.query)
+  console.log(`Proxy post headers`, req.headers)
+  console.log(`Proxy post body`, req.body)
+  const match =
+    req.query.token && req.query.token.match(/^(.*)\/(earthstar-api.*)/)
+  if (match) {
+    const token = match[1]
+    const apiPath = match[2]
+    const url = `${req.params.protocol}://${req.params.host}/${apiPath}`
+    const headers = {
+      'content-type': req.headers['content-type'],
+      'content-length': req.headers['content-length'],
+      'accept-language': req.headers['accept-language'],
+      'user-agent': req.headers['user-agent'],
+      accept: req.headers['accept'],
+      'accept-encoding': req.headers['accept-encoding'],
+      authorization: `Bearer ${token}`
+    }
+    console.log(`Proxy post sending headers`, headers)
+    request(
+      {
+        method: 'POST',
+        uri: url,
+        proxy: process.env.https_proxy,
+        ca,
+        headers,
+        body: req.body
+      },
+      function (error, response, body) {
+        if (error) {
+          console.error('error:', error)
+          res.status(500).send('Error')
+          return
+        }
+        console.log('headers:', response && response.headers)
+        console.log('statusCode:', response && response.statusCode)
+        console.log('body:', body)
+        res.status(response.statusCode).send(body)
+      }
+    )
+  } else {
+    res.status(400).send('Invalid target URL')
+  }
+})
+
+app.use('/proxy', proxyRouter)
 
 // serve the index path for any URL
 app.get('*', (request, response) => {

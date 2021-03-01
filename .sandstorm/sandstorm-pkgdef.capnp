@@ -231,6 +231,9 @@ const pkgdef :Spk.PackageDefinition = (
   #  # comes in to your app's API, sandstorm-http-bridge will prefix the request's path with
   #  # this string, if specified.
   #),
+  bridgeConfig = (
+    apiPath = "/pub/"
+  ),
 );
 
 const myCommand :Spk.Manifest.Command = (

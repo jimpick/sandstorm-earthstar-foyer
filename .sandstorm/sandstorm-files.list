@@ -706,6 +706,7 @@ sbin
 usr/bin
 usr/bin/curl
 usr/bin/env
+usr/bin/find
 usr/bin/free
 usr/bin/host
 usr/bin/less
